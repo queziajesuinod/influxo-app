@@ -1,0 +1,22 @@
+{
+  "name": "influxo-app",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node server.js",
+    "migrate": "node -r dotenv/config ./node_modules/sequelize-cli/lib/sequelize db:migrate --config config/config.cjs",
+    "migrate:tenant": "node scripts/migrateTenant.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "pg": "^8.11.3",
+    "sequelize": "^6.37.7",
+    "sequelize-cli": "^6.6.3",
+    "umzug": "^3.3.1"
+  }
+}
