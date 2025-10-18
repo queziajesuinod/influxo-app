@@ -2,7 +2,7 @@
 import { Sequelize } from 'sequelize';
 import { ClienteModel } from '../models/cliente.js';
 import { ProdutoModel } from '../models/produto.js';
-import { ProdutoPrecoModel } from '../models/produto_preco.js';
+import { ProdutoPrecoModel } from '../models/produtoPreco.js';
 import { ConsumoModel } from '../models/consumo.js';
 
 /**

@@ -1,5 +1,5 @@
 import { DataTypes } from 'sequelize';
-import { ProdutoPrecoModel } from './produto_preco.js'; // ✅ ajuste conforme o nome do arquivo
+import { ProdutoPrecoModel } from './produtoPreco.js'; // ✅ ajuste conforme o nome do arquivo
 
 export const ProdutoModel = (sequelize) => {
   const Produto = sequelize.define(

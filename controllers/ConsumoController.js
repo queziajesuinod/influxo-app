@@ -1,6 +1,6 @@
 // controllers/ConsumoController.js
 import { ConsumoModel } from '../models/consumo.js';
-import { ProdutoPrecoModel } from '../models/produto_preco.js';
+import { ProdutoPrecoModel } from '../models/produtoPreco.js';
 import { getTenantSequelize } from '../config/database.js';
 
 export const ConsumoController = {
