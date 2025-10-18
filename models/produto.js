@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
+import { ProdutoPrecoModel } from './produto_preco.js'; // ✅ ajuste conforme o nome do arquivo
 
 export const ProdutoModel = (sequelize) => {
-  return sequelize.define(
+  const Produto = sequelize.define(
     'Produto',
     {
       id: {
@@ -20,5 +21,12 @@ export const ProdutoModel = (sequelize) => {
       timestamps: true,
     }
   );
-  ProdutoModel.hasMany(ProdutoPrecoModel, { foreignKey: 'produto_id' });
+
+  // ✅ associações (executadas antes do retorno)
+  Produto.hasMany(ProdutoPrecoModel(sequelize), {
+    foreignKey: 'produto_id',
+    as: 'precos',
+  });
+
+  return Produto;
 };

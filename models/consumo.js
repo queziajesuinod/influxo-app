@@ -1,8 +1,10 @@
 // models/consumo.js
 import { DataTypes } from 'sequelize';
+import { ClienteModel } from './cliente.js';
+import { ProdutoModel } from './produto.js';
 
-export const ConsumoModel = (sequelize) =>
-  sequelize.define(
+export const ConsumoModel = (sequelize) => {
+  const Consumo = sequelize.define(
     'Consumo',
     {
       id: {
@@ -39,7 +41,21 @@ export const ConsumoModel = (sequelize) =>
     },
     {
       tableName: 'consumos',
-      schema: sequelize.config.schema,
+      schema: sequelize.options.schema, // ✅ correto — pega o schema do tenant
       timestamps: true,
     }
   );
+
+  // 🔗 Relacionamentos
+  Consumo.belongsTo(ClienteModel(sequelize), {
+    foreignKey: 'cliente_id',
+    as: 'cliente',
+  });
+
+  Consumo.belongsTo(ProdutoModel(sequelize), {
+    foreignKey: 'produto_id',
+    as: 'produto',
+  });
+
+  return Consumo;
+};

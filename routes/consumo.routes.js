@@ -1,7 +1,7 @@
 // routes/consumo.routes.js
 import express from 'express';
 import { ConsumoController } from '../controllers/ConsumoController.js';
-import { authenticate } from '../middlewares/authenticate.js';
+import { authenticate } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 

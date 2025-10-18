@@ -1,7 +1,8 @@
 import { DataTypes } from 'sequelize';
+import { ProdutoModel } from './produto.js'; // ✅ certifique-se do caminho correto
 
 export const ProdutoPrecoModel = (sequelize) => {
-  return sequelize.define(
+  const ProdutoPreco = sequelize.define(
     'ProdutoPreco',
     {
       id: {
@@ -29,10 +30,16 @@ export const ProdutoPrecoModel = (sequelize) => {
     },
     {
       tableName: 'produto_precos',
-      schema: sequelize.options.schema,
+      schema: sequelize.options.schema, // 🔥 cria dentro do schema do tenant
       timestamps: true,
     }
   );
-  ProdutoPrecoModel.belongsTo(ProdutoModel, { foreignKey: 'produto_id' });
 
+  // ✅ Define a relação ProdutoPreco → Produto
+  ProdutoPreco.belongsTo(ProdutoModel(sequelize), {
+    foreignKey: 'produto_id',
+    as: 'produto',
+  });
+
+  return ProdutoPreco;
 };
